@@ -1,0 +1,27 @@
+---
+const actions = [
+  { label: 'GitHub', href: 'https://github.com/danishkz94', external: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/danish-kazi-a6554213b/', external: true },
+  { label: 'Email', href: 'mailto:danish_kazi@yahoo.com', external: false },
+];
+---
+<section id="top" class="hero shell" aria-labelledby="hero-heading">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="availability-dot"></span> Vancouver, BC · Building at the edge</p>
+    <h1 id="hero-heading">Danish Kazi<span class="title-dot">.</span></h1>
+    <p class="hero-role">Senior Software Developer <span>/</span> DevOps</p>
+    <div class="hero-summary">
+      <p>I design <strong>secure cloud platforms</strong> and delivery systems that make reliable software the default—not the exception.</p>
+      <p>Across <strong>AWS, Azure, and Google Cloud</strong>, I combine Docker, Kubernetes, NGINX, and Apache with pragmatic CI/CD, data protection, and compliance practices to build scalable infrastructure that lasts.</p>
+    </div>
+  </div>
+  <aside class="hero-actions" aria-label="Quick actions">
+    <p class="action-label">Find me online</p>
+    <div class="action-stack">
+      {actions.map((action) => <a href={action.href} class="action-pill" target={action.external ? '_blank' : undefined} rel={action.external ? 'noreferrer' : undefined}><span>{action.label}</span><span aria-hidden="true">↗</span></a>)}
+      <button class="action-pill action-pill-primary" type="button" data-print-resume><span>Download PDF</span><span aria-hidden="true">↓</span></button>
+    </div>
+    <p class="action-note">A print-optimized résumé will open in your browser.</p>
+  </aside>
+</section>
+<script>document.querySelector<HTMLButtonElement>('[data-print-resume]')?.addEventListener('click', () => window.print());</script>

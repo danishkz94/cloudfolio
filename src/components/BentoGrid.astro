@@ -1,0 +1,45 @@
+---
+const certifications = [
+  { title: 'CKA — Certified Kubernetes Administrator', description: 'Production container orchestration across cloud-native platforms.', tags: ['Kubernetes', 'Containers'] },
+  { title: 'Microsoft Certified: Azure Administrator Associate', description: 'Implementing, managing, and monitoring Azure solutions.', tags: ['Azure', 'Administration'] },
+  { title: 'Solutions Architect — Professional', description: 'Architecture and cloud design for high-performance systems.', tags: ['Architecture', 'Cloud'] },
+  { title: 'ITIL Foundation', description: 'Service-management practices grounded in delivery outcomes.', tags: ['ITSM', 'Delivery'] },
+];
+---
+
+<section id="credentials" class="section shell credentials" aria-labelledby="credentials-heading">
+  <div class="section-heading">
+    <p class="section-kicker">03 / Selected work</p>
+    <div>
+      <h2 id="credentials-heading">Built with intent.<br /><span>Backed by practice.</span></h2>
+      <p>A focused view of the project and credentials behind this portfolio.</p>
+    </div>
+  </div>
+  <article class="work-feature">
+    <div class="work-feature-copy">
+      <p class="card-kind">Featured project</p>
+      <h3>Cloudfolio</h3>
+      <p>A fast, static résumé site designed as a deployable engineering artifact: versioned in Git, built automatically, and ready for edge delivery.</p>
+    </div>
+    <div class="work-feature-meta">
+      <p class="meta-label">Architecture</p>
+      <ul class="tag-list" aria-label="Cloudfolio technologies"><li>Astro</li><li>Cloudflare Pages</li><li>GitHub</li><li>CI/CD</li></ul>
+      <div class="architecture-diagram" role="img" aria-label="GitHub deploys Cloudfolio through Cloudflare Pages to a global edge network">
+        <div class="architecture-node">GitHub</div>
+        <div class="architecture-link" aria-hidden="true"><span></span></div>
+        <div class="architecture-node architecture-node-active">Cloudflare<br />Pages</div>
+        <div class="architecture-link" aria-hidden="true"><span></span></div>
+        <div class="architecture-node">Global<br />edge</div>
+      </div>
+    </div>
+  </article>
+  <div class="certifications-header"><p class="section-kicker">Credentials</p><span>04 verified qualifications</span></div>
+  <div class="certification-grid">
+    {certifications.map((certification) => (
+      <article class="certification-card">
+        <div><p class="card-kind">Certification</p><h3>{certification.title}</h3><p>{certification.description}</p></div>
+        <ul class="tag-list" aria-label={`${certification.title} areas`}>{certification.tags.map((tag) => <li>{tag}</li>)}</ul>
+      </article>
+    ))}
+  </div>
+</section>

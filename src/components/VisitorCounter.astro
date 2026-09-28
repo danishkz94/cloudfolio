@@ -1,0 +1,25 @@
+---
+interface Props { endpoint?: string; }
+const { endpoint = '/api/visitors' } = Astro.props;
+---
+<div class="telemetry" data-telemetry-url={endpoint} aria-live="polite" aria-busy="true">
+  <span class="telemetry-pulse" aria-hidden="true"><span></span></span>
+  <span class="telemetry-label">Live telemetry</span>
+  <span class="telemetry-value telemetry-skeleton" data-telemetry-value>••••</span>
+</div>
+<script>
+  const telemetry = document.querySelector<HTMLElement>('[data-telemetry-url]');
+  const value = telemetry?.querySelector<HTMLElement>('[data-telemetry-value]');
+  if (telemetry && value) {
+    fetch(telemetry.dataset.telemetryUrl ?? '/api/visitors', { headers: { Accept: 'application/json' } })
+      .then((response) => { if (!response.ok) throw new Error('Telemetry endpoint unavailable'); return response.json(); })
+      .then((data: { count?: number; visitors?: number }) => {
+        const count = data.count ?? data.visitors;
+        if (typeof count !== 'number') throw new Error('Telemetry response is invalid');
+        value.textContent = new Intl.NumberFormat('en-CA').format(count);
+        telemetry.dataset.state = 'ready';
+      })
+      .catch(() => { value.textContent = 'offline'; telemetry.dataset.state = 'offline'; })
+      .finally(() => telemetry.setAttribute('aria-busy', 'false'));
+  }
+</script>

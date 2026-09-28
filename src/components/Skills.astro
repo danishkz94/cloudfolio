@@ -1,0 +1,15 @@
+---
+const skillGroups = [
+  { number: '01', title: 'Cloud & architecture', items: ['AWS', 'Azure', 'Google Cloud Platform', 'FedRAMP design'] },
+  { number: '02', title: 'Platform engineering', items: ['Kubernetes', 'EKS · AKS · GKE', 'Docker · CRI-O', 'Istio · service mesh'] },
+  { number: '03', title: 'Delivery automation', items: ['Terraform', 'GitHub Actions', 'Azure DevOps', 'CI/CD pipelines'] },
+  { number: '04', title: 'Security & reliability', items: ['IAM · encryption', 'SOC 2 · ISO 27001', 'Nessus · Tenable.io', 'Observability'] },
+  { number: '05', title: 'Application foundations', items: ['NGINX · Apache', 'MySQL · MongoDB', 'Linux · Windows', 'Architecture reviews'] },
+];
+---
+<section id="skills" class="section shell skills" aria-labelledby="skills-heading">
+  <div class="section-heading"><p class="section-kicker">02 / Capabilities</p><div><h2 id="skills-heading">A practical stack for<br /><span>reliable systems.</span></h2><p>Cloud, containers, delivery, and security—connected as one operating model.</p></div></div>
+  <div class="skills-carousel" aria-label="Automatically advancing capabilities showcase">
+    {skillGroups.map((group) => <article class="skill-card"><p class="skill-number">{group.number}</p><h3>{group.title}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}
+  </div>
+</section>
