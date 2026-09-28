@@ -17,9 +17,10 @@ const { endpoint = '/api/visitors' } = Astro.props;
         const count = data.count ?? data.visitors;
         if (typeof count !== 'number') throw new Error('Telemetry response is invalid');
         value.textContent = new Intl.NumberFormat('en-CA').format(count);
+        value.classList.remove('telemetry-skeleton');
         telemetry.dataset.state = 'ready';
       })
-      .catch(() => { value.textContent = 'offline'; telemetry.dataset.state = 'offline'; })
+      .catch(() => { value.textContent = 'offline'; value.classList.remove('telemetry-skeleton'); telemetry.dataset.state = 'offline'; })
       .finally(() => telemetry.setAttribute('aria-busy', 'false'));
   }
 </script>
